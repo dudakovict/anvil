@@ -1,0 +1,43 @@
+version: "2"
+
+linters:
+  default: standard # errcheck, govet, ineffassign, staticcheck, unused
+  enable:
+    - bodyclose # unclosed resp.Body on outbound HTTP calls
+    - contextcheck # ctx not passed down through call chains
+    - copyloopvar
+    - errorlint # %w wrapping / errors.Is correctness
+    - gocritic
+    - gosec
+    - misspell
+    - nlreturn # blank line before return/branch statements
+    - noctx # HTTP requests sent without a context
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - unconvert
+    - unparam
+    - wsl_v5 # empty lines between logical blocks
+  settings:
+    govet:
+      enable:
+        - shadow
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+  exclusions:
+    rules:
+      - path: internal/platform/docker/
+        linters:
+          - gosec
+          - noctx
+
+formatters:
+  enable:
+    - gofumpt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/dudakovict/anvil

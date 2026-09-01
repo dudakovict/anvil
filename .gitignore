@@ -1,0 +1,15 @@
+# Binaries
+bin/
+*.exe
+
+# Environment
+.env
+
+# Coverage / test artifacts
+coverage.out
+*.test
+
+# Editor
+.idea/
+.vscode/
+*.swp
